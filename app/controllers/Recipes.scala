@@ -35,8 +35,7 @@ class Recipes @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implicit exec: E
   def get(id: String) = Action.async {
     val result = recipesFuture.flatMap {
       _.find(Json.obj("_id" -> BSONObjectID(id)))
-        .cursor[Recipe](ReadPreference.primary)
-          .headOption
+          .one[Recipe](ReadPreference.primary)
     }
     result.map { _ match {
         case Some(recipe) => Ok(Json.toJson(recipe))
