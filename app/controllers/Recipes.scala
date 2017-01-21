@@ -37,10 +37,9 @@ class Recipes @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implicit exec: E
       _.find(Json.obj("_id" -> BSONObjectID(id)))
           .one[Recipe](ReadPreference.primary)
     }
-    result.map { _ match {
-        case Some(recipe) => Ok(Json.toJson(recipe))
-        case None => NotFound("recipe not found")
-      }
+    result.map {
+      case Some(recipe) => Ok(Json.toJson(recipe))
+      case None => NotFound("recipe not found")
     }
   }
 //
