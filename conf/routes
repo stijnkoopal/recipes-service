@@ -1,8 +1,8 @@
 # API
 GET /api/info           controllers.Application.info
 GET /api/recipes        controllers.Recipes.list
-GET /api/recipes/:id    controllers.Recipes.get(id: Long)
-POST /api/recipes          controllers.Recipes.create
-PUT /api/recipes/:id       controllers.Recipes.update(id: Long)
+GET /api/recipes/:id    controllers.Recipes.get(id: String)
+#POST /api/recipes          controllers.Recipes.create
+#PUT /api/recipes/:id       controllers.Recipes.update(id: Long)
 
     
